@@ -1,5 +1,5 @@
 # tutorial-js-playwright-Applitools-Eyes
-[![build workflow](https://github.com/Xray-App/tutorial-js-playwright-Applitools-Eyes/actions/workflows/main-cloud.yml/badge.svg)](https://github.com/Xray-App/tutorial-js-playwright-Applitools-Eyes/actions/workflows/main_cloud.yml)
+[![build workflow](https://github.com/Xray-App/tutorial-js-playwright-Applitools-Eyes/actions/workflows/main_cloud.yml/badge.svg)](https://github.com/Xray-App/tutorial-js-playwright-Applitools-Eyes/actions/workflows/main_cloud.yml)
 [![license](https://img.shields.io/badge/License-BSD%203--Clause-green.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Xray-App/community)
 
