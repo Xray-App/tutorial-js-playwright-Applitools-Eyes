@@ -33,7 +33,8 @@ jobs:
     - run: |
         APPLITOOLS_API_KEY="${{ secrets.EYES_API_KEY }}" PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml npx playwright test ./tests/* browser=chromium --reporter=junit,line    
     - run: |
-        cat results.xml  | sed s/<system-out>/<properties><property name="testrun_comment"><![CDATA[/g | sed s/<\/system-out>/]]><\/property><\/properties>/g > results.xml
+        sed -i '' -e 's/<system-out>/<properties><property name="testrun_comment"><![CDATA[/g' results.xml
+        sed -i '' -e 's/<\/system-out>/]]><\/property><\/properties>/g' results.xml
     - name: "Import results to Xray (cloud)"
       uses: mikepenz/xray-action@v2.0.0
       with:
