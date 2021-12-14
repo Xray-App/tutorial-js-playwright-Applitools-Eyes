@@ -31,7 +31,8 @@ jobs:
         npx playwright install
         npm i -D @applitools/eyes-playwright
     - run: |
-        APPLITOOLS_API_KEY="${{ secrets.EYES_API_KEY }}" PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml npx playwright test ./tests/* browser=chromium --reporter=junit,line
+        APPLITOOLS_API_KEY="${{ secrets.EYES_API_KEY }}" PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml npx playwright test ./tests/* browser=chromium --reporter=junit,line    
+    - run: |
         ls -li
         sed -i '' -e 's/<system-out>/<properties><property name="testrun_comment"><![CDATA[/g' results.xml
         sed -i '' -e 's/<\/system-out>/]]><\/property><\/properties>/g' results.xml
