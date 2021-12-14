@@ -33,8 +33,7 @@ jobs:
     - run: |
         PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml 
         APPLITOOLS_API_KEY="${{ secrets.EYES_API_KEY }}" npx playwright test ./tests/* browser=chromium --reporter=junit,line
-        pwd
-        ls -li
+        ls -li ./tests
         sed -i '' -e 's/<system-out>/<properties><property name="testrun_comment"><![CDATA[/g' ./tests/results.xml
         sed -i '' -e 's/<\/system-out>/]]><\/property><\/properties>/g' ./tests/results.xml
     - name: "Import results to Xray (cloud)"
