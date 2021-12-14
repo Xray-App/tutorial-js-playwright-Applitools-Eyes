@@ -31,13 +31,12 @@ jobs:
         npx playwright install
         npm i -D @applitools/eyes-playwright
     - run: |
-        PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml 
-        APPLITOOLS_API_KEY="${{ secrets.EYES_API_KEY }}" npx playwright test ./tests/* browser=chromium --reporter=junit,line
+        APPLITOOLS_API_KEY="${{ secrets.EYES_API_KEY }}" PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml npx playwright test ./tests/* browser=chromium --reporter=junit,line
         ls -li
         ls -li ./tests
         ls -li ./reports
-        sed -i '' -e 's/<system-out>/<properties><property name="testrun_comment"><![CDATA[/g' ./tests/results.xml
-        sed -i '' -e 's/<\/system-out>/]]><\/property><\/properties>/g' ./tests/results.xml
+        sed -i '' -e 's/<system-out>/<properties><property name="testrun_comment"><![CDATA[/g' results.xml
+        sed -i '' -e 's/<\/system-out>/]]><\/property><\/properties>/g' results.xml
     - name: "Import results to Xray (cloud)"
       uses: mikepenz/xray-action@v2.0.0
       with:
@@ -45,7 +44,7 @@ jobs:
          password: "${{ secrets.XRAYCLOUD_CLIENT_SECRET }}"
          xrayCloud: "true"
          testFormat: "junit"
-         testPaths: "**/tests/*.xml"
+         testPaths: "results.xml"
          testPlanKey: "${{ secrets.XRAYCLOUD_TEST_PLAN_KEY }}"
          projectKey: "${{ secrets.JIRACLOUD_PROJECT_KEY }}"    
     
