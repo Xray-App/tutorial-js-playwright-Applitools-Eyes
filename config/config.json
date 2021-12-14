@@ -1,0 +1,10 @@
+{
+    "endpoint" : "https://xray-essentials-petclinic.herokuapp.com/",
+    "owners_link" : "a[title=\"find owners\"]",
+    "top_menu_entry" :"//*[@id=\"main-navbar\"]/ul/li[1]/a",
+    "vet_menu_entry" : "//*[@id=\"main-navbar\"]/ul/li[3]/a", 
+    "find_owners_button" : "a[title=\"find owners\"]",
+    "vet_text" : "Veterinarians",
+    "home_text" : "Home",
+    "batch_id" : "PetClinicBatchPC"
+}
