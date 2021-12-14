@@ -33,19 +33,10 @@ jobs:
     - run: |
         PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml 
         APPLITOOLS_API_KEY="${{ secrets.EYES_API_KEY }}" npx playwright test ./tests/* browser=chromium --reporter=junit,line
+        pwd
+        ls -li
         sed -i '' -e 's/<system-out>/<properties><property name="testrun_comment"><![CDATA[/g' ./tests/results.xml
         sed -i '' -e 's/<\/system-out>/]]><\/property><\/properties>/g' ./tests/results.xml
-    - name: "Import results to Xray (server/DC)"
-      uses: mikepenz/xray-action@v2.0.0
-      with:
-         username: "${{ secrets.JIRASERVER_USERNAME }}"
-         password: "${{ secrets.JIRASERVER_PASSWORD }}"
-         xrayCloud: "false"
-         xrayBaseUrl: "${{ secrets.JIRASERVER_BASE_URL }}"
-         testFormat: "junit"
-         testPaths: "**/tests/*.xml"
-         testPlanKey: "${{ secrets.XRAYSERVER_TEST_PLAN_KEY }}"
-         projectKey: "${{ secrets.JIRASERVER_PROJECT_KEY }}"
     - name: "Import results to Xray (cloud)"
       uses: mikepenz/xray-action@v2.0.0
       with:
