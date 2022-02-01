@@ -36,7 +36,7 @@ jobs:
         sed -i -e 's/<system-out>/<properties><property name="testrun_comment"><![CDATA[/g' results.xml
         sed -i -e 's/<\/system-out>/]]><\/property><\/properties>/g' results.xml
     - name: "Import results to Xray (cloud)"
-      uses: mikepenz/xray-action@v2.0.0
+      uses: mikepenz/xray-action@v2.3.0
       with:
          username: "${{ secrets.XRAYCLOUD_CLIENT_ID }}"
          password: "${{ secrets.XRAYCLOUD_CLIENT_SECRET }}"
